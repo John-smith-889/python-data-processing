@@ -196,11 +196,14 @@ list_13 = [(i,2) for i in list_03 if i % 2 == 0]
 list_13
 
 # Use nested list comprehension for generate tuples 
-list_08 = [tuple( enum + p for p in list_04) for enum, i in enumerate(list_03)]
-list_08
+list_14 = [tuple( enum + p for p in list_04) for enum, i in enumerate(list_03)]
+list_14
 
 # create multiplication table
-[[p*i for p in list_10] for i in list_10]
+list_15 = list(range(1,11))
+[[p*i for p in list_15] for i in list_15]
+
+
 
 
 ###############################################################
@@ -692,6 +695,12 @@ dataframe_03
 # Searching #
 #!###########
 
+######################
+# DataFrame indexing #
+######################
+
+dataframe_03.iloc[3,0]
+
 
 ###############################################################
 # Traversal #
@@ -925,5 +934,8 @@ for i in list_01:
         break
     else:
         print(i) # operation
-    
+
+
+
+
 
