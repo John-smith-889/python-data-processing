@@ -103,6 +103,10 @@ list_07.remove(list_07[0])
 # remove element with a given value 
 list_07.remove(9)
 
+# remove from [0] to [1] elements from list
+del list_07[0:2]
+list_07
+
 
 ###############################################################
 # Merging #
@@ -201,7 +205,7 @@ list_14
 
 # create multiplication table
 list_15 = list(range(1,11))
-[[p*i for p in list_15] for i in list_15]
+[[i*j for j in list_15] for i in list_15]
 
 
 
@@ -368,6 +372,8 @@ tuple_04[:8]
 #!###########
 
 
+
+
 ###############################################################
 # Sorting #
 #!#########
@@ -415,7 +421,8 @@ dict_03
 # Deletion #
 #!##########
 
-
+# Delete element with given key
+del dict_03[1]
 
 
 ###############################################################
