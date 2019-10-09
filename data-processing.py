@@ -490,75 +490,17 @@ for k,v in dict_02.items():
 # Sorting #
 #!#########
 
+# Sort dictionary by value
+dict_06 = dict(sorted(dict_02.items(), key=lambda x: x[1], reverse=True))
+
+# or
+def f(dict_):
+    return dict_[1]
+dict_07 = dict(sorted(dict_02.items(), key=f, reverse=True))
 
 
-
-###############################################################################
-# set #
-#!#####
-"""
-Elements in set have to be unique.
-"""
-
-###############################################################
-# Insertion #
-#!###########
-
-
-####################
-# Create empty set #
-####################
-
-set_01 = set([]) # actually its just converting list to set
-    
-set_02 = set([1,2,3])
-set_02
-
-set_03 = {1,2,3,4}
-type(set_03)
-
-########################
-# Add element to a set #
-########################
-
-set_01.add(4)
-set_01
-
-###############################################################
-# Deletion #
-#!##########
-
-
-#############################
-# Remove element from a set #
-#############################
-
-set_01.remove(4)
-set_01
-
-
-###############################################################
-# Merging #
-#!#########
-
-##############
-# Sets union #
-##############
-
-set_03 = set_01.union(set_02)
-set_03
-
-
-
-###############################################################################
-# froozen set #
-#!#############
-
-# frozen set is immutable, so we cannot add elements to it, nor remove
-
-frozenset_01 = frozenset([1,2,3])
-
-frozenset_01
+# Sort dictionary by key
+dict_08 = dict(sorted(dict_02.items(), key=lambda x: x[0], reverse=False))
 
 
 
