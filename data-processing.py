@@ -89,7 +89,12 @@ print(list_05)
 list_06 = list(np.arange(20,10,-0.1))
 print(list_06)
 
+##########################
+# insert element to list #
+##########################
 
+# Insert value 0 to position 1
+list_04.insert(1, 0)
 
 ###############################################################
 # Deletion #
@@ -133,6 +138,19 @@ list_08[1]
 
 list_08[2:]
 
+
+###########################################
+# Check if certain element is in the list #
+###########################################
+
+3 in list_08
+
+################################################
+# Check how many given elements is in the list #
+################################################
+
+list_08.count(10)
+
 #######################################
 # Search for elements under condition #
 #######################################
@@ -148,17 +166,17 @@ list_08[2:]
 # enumerate() creating a list of tuples, where 1st elements of tuples
 # are indexes of list elements
 
+#####################################
+# Check mutual elements for 2 lists #
+#####################################
+
+[i for i in list_08 if i in [3,4]]
+
+########################################### 
+# Check if is at least one mutual element #
 ###########################################
-# Check if certain element is in the list #
-###########################################
 
-10 in list_08
-
-################################################
-# Check how many given elements is in the list #
-################################################
-
-list_08.count(10)
+any([i for i in list_08 if i in [3,4]])
 
 
 ###############################################################
@@ -173,7 +191,7 @@ list_09
 # round list elements #
 ####################### 
 
-list_10 = [round(i,2) for i in list_09] 
+list_10 = [round(i,2) for i in list_09]
 list_10
 
 # or (round with map function to integers)
@@ -181,9 +199,9 @@ list(map(round,list_09))
 
 
 
-#################################################
-# create list of tuples/list with existing list # with zip function
-#################################################
+##################################################
+# create list of tuples/list with existing lists # with zip function
+##################################################
 
 list_11 = list(zip(list_02,list_03))
 list_11
@@ -203,10 +221,12 @@ list_13
 list_14 = [tuple( enum + p for p in list_04) for enum, i in enumerate(list_03)]
 list_14
 
-# create multiplication table
+###############################
+# create multiplication table #
+###############################
+
 list_15 = list(range(1,11))
 [[i*j for j in list_15] for i in list_15]
-
 
 
 
@@ -343,6 +363,7 @@ Tuples are immutable, but we still may filter it and create new tuples after
 filtering.
 """
 
+
 ###############################################################
 # Merging #
 #!#########
@@ -366,13 +387,22 @@ tuple_04[1]
 
 tuple_04[:8]
 
+#######################################
+# Search for elements under condition #
+#######################################
+
+tuple(i for i in tuple_02 if i % 2 == 0)
+
 
 ###############################################################
 # Traversal #
 #!###########
 
+#########################
+# modify tuple elements # with list comprehension
+#########################
 
-
+tuple(i for i in tuple_02 if i % 2 == 0)
 
 ###############################################################
 # Sorting #
@@ -471,6 +501,11 @@ list(dict_02.values())
 
 dict_02.items()
 
+#####################################
+# Searching with list comprehension #
+#####################################
+
+[v for k,v in dict_04.items() if k % 2 == 0]
 
 ###############################################################
 # Traversal #
@@ -484,6 +519,9 @@ dict_02.items()
 
 for k,v in dict_02.items():
     print(k)
+
+# dict comprehension
+{v:v for k,v in dict_03.items() if v % 2 == 0}
 
 
 ###############################################################
@@ -626,6 +664,8 @@ type(dataframe_01)
 ###################################
 
 dataframe_02 = pd.read_csv("numbers3.csv")
+
+# Adding index and column names
 dataframe_03 = pd.DataFrame(dataframe_02.values, index = (2,3),columns=['a','b','c'])
 dataframe_03
 
