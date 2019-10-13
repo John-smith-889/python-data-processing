@@ -139,6 +139,13 @@ list_08[1]
 list_08[2:]
 
 
+####################################
+# How many elements is in the list #
+####################################
+
+len(list_08)
+
+
 ###########################################
 # Check if certain element is in the list #
 ###########################################
@@ -218,7 +225,7 @@ list_13 = [(i,2) for i in list_03 if i % 2 == 0]
 list_13
 
 # Use nested list comprehension for generate tuples 
-list_14 = [tuple( enum + p for p in list_04) for enum, i in enumerate(list_03)]
+list_14 = [tuple( enum + j for j in list_04) for enum, i in enumerate(list_03)]
 list_14
 
 ###############################
