@@ -549,6 +549,8 @@ dict_08 = dict(sorted(dict_02.items(), key=lambda x: x[0], reverse=False))
 
 
 
+
+
 ###############################################################################
 # numpy array #
 #!#############
@@ -558,14 +560,14 @@ dict_08 = dict(sorted(dict_02.items(), key=lambda x: x[0], reverse=False))
 # Insertion #
 #!###########
 
-################################
-# Convert variables to ndarray #
-################################
+############################
+# Convert lists to ndarray #
+############################
 
 import numpy as np
 
 # Convert list/tuple/set to ndarray (set first convert to list)
-array_01 = np.array([1,2,3,4]).reshape(2,2)
+array_01 = np.array([1,2,3,4,5]).reshape(5,1)
 type(array_01)
 
 # Convert list of lists to ndarray 
@@ -580,10 +582,19 @@ array_02
 #######################################
 # Create ndarray with arange() method #
 #######################################
+# Control over distance between generated elements
 
 import numpy as np
 array_03 = np.arange(1, 101, dtype = np.float).reshape(10,10)
 array_03
+
+
+#######################################
+# Create ndarray with arange() method #
+#######################################
+# Control over number of generated elements
+
+array_04 = np.linspace(1,11,2)
 
 
 #################################################
@@ -591,8 +602,8 @@ array_03
 #################################################
 
 import numpy as np
-array_04 = np.zeros((2, 3)) # array 2x3
-array_04
+array_05 = np.zeros((2, 3)) # array 2x3
+array_05
 
 
 ######################################
@@ -600,14 +611,14 @@ array_04
 ######################################
 # (unifform [0,1) distribution)
 
-array_05 = np.random.rand(5,3)  
-array_05
+array_06 = np.random.rand(5,3)  
+array_06
 
 ################################
 # Convert pandas df to ndarray #
 ################################
 
-dataframe_01.values()
+dataframe_01.values
 
          
                 
@@ -615,20 +626,77 @@ dataframe_01.values()
 # Deletion #
 #!##########
 
+###########################
+# Delete rows and columns #
+###########################
+
+array_02
+
+np.delete(array_02, 0, 0) # delete 1 row
+np.delete(array_02, 1, 0) # delete 2 row
+np.delete(array_02, [0,1], 0) # delete list of rows
+
+np.delete(array_02, 0, 1) # delete 1 column
+np.delete(array_02, [0,1], 1) # delete list of column
+
+
+
 
 ###############################################################
 # Merging #
 #!#########
+
+# merge arrays (horizontal concatenation)
+np.concatenate((array_02, array_01), axis=1)
 
 
 ###############################################################
 # Searching #
 #!###########
 
+import numpy as np
+array_09 = np.ones((4,4))
+array_09
+array_09[0,0] = 'nan'
+
+
+############
+# Indexing #
+############
+# intuitive indexing
+
+array_09[:,0:2]
+array_09[[0,1],:]
+
+
+################################
+# Check which elements are NaN #
+################################
+
+# Return bool ndarray
+np.isnan(array_09)
+
+# Return ndarray with indices of NaN
+np.argwhere(np.isnan(array_09))
+
+array_09.nan
+
 
 ###############################################################
 # Traversal #
 #!###########
+
+import numpy as np
+array_09 = np.ones((4,4))
+array_09
+array_09[0,0] = 'nan'
+
+
+###################################
+# Convert all NaN values to zeros #
+###################################
+
+np.nan_to_num(array_09, copy=False)
 
 
 ###############################################################
@@ -658,28 +726,41 @@ matters) using ndarray as 1st argument.
 import pandas as pd
 
 # create 5x3 pandas DataFrame from ndarray
-dataframe_01 = pd.DataFrame(array_02,index=range(0,5,1),columns=list('ABC'))
-                #
-                #  index=range(0,5,1) - create index from 0, 5 poles, by 1
-                #  columns=list('ABC')) - broke string to letters and add as          
-type(dataframe_01)
-
+dataframe_01 = pd.DataFrame(np.arange(1,21).reshape((5,4)),index=range(0,5,1), 
+                            columns=list('ABCD'))
+dataframe_01
 
 
 ###################################
 # Create DataFrame from .csv file #
 ###################################
 
-dataframe_02 = pd.read_csv("numbers3.csv")
+dataframe_02 = pd.read_csv("numbers3.csv", 
+                           sep = ',', # also alias "delimiter"
+                           header = None, # which row take as a column names
+                           # None - names are generated from 0 up
+                           names = list('abc'), # column names(overwrite header)
+                           usecols = [0,1,2], # read particular columns,
+                           # if no names, provide integer numbers of cols                           
+                           skiprows = 0, # how many rows skip
+                           nrows = 4, # number of rows we want to import
+                           index_col = None, # set particular column as index
+                           decimal = '.') 
+# https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html
+dataframe_02
 
-# Adding index and column names
-dataframe_03 = pd.DataFrame(dataframe_02.values, index = (2,3),columns=['a','b','c'])
+
+# Change index and column names
+dataframe_03 = pd.DataFrame(dataframe_02.values, index = [0,1,2], columns=['a','b','c'])
 dataframe_03
 
 
 ###############################################################
 # Deletion #
 #!##########
+
+
+
 
 
 ###############################################################
@@ -691,11 +772,86 @@ dataframe_03
 # Searching #
 #!###########
 
+################################
+# DataFrame indexing with iloc #
+################################
+
+dataframe_01
+dataframe_01.iloc[0,0] # get particular value
+
+dataframe_01.iloc[[0]] # get one row
+dataframe_01.iloc[0:2] # get slice of rows (2 first rows)
+dataframe_01.iloc[[0,3]] # get particular rows
+
+dataframe_01.iloc[[-1]] # get last row
+dataframe_01.iloc[-2:] # get last 2 rows
+
+
+dataframe_01.iloc[:,[0]] # get one column
+dataframe_01.iloc[:,[0,1]] # get particular columns
+dataframe_01.iloc[:,list(range(2))] # get particular columns
+
+dataframe_01.iloc[0:2,[0]] # slice
+dataframe_01.iloc[0:2,[0,1,2]] # slice
+dataframe_01.iloc[[0,1],[0,1,2]] # slice
+
+
+###############################
+# DataFrame indexing with loc #
+###############################
+
+dataframe_01
+dataframe_01.loc[[0,1],['A']] # get particular rows and columns
+dataframe_01.loc[0:2,['A','B']] # get rows slice and columns (involving row 2)
+
+
 ######################
-# DataFrame indexing #
+# Check column types #
 ######################
 
-dataframe_03.iloc[3,0]
+dataframe_01.dtypes
+
+
+
+#################
+# eval() method #
+#################
+# High performance memory-saving query
+
+
+
+#################
+# eval() method #
+#################
+# High performance memory-saving query
+
+
+
+
+####################
+# pandasql quering #
+####################
+# Using pandasql module with SQLite syntax
+
+import pandasql as ps
+
+# Write queries
+q1 = "SELECT * FROM dataframe_01"
+
+q2 = """SELECT * 
+        FROM dataframe_01
+        WHERE C > 3     """
+
+# Querying with sqldf() method
+ps.sqldf(q1, globals())
+ps.sqldf(q2, globals())
+
+
+# Simplifying Queries with lambda function
+sql = lambda query: ps.sqldf(query, globals())
+
+# Querying with sqldf() method with lambda function
+sql("select * from dataframe_01")
 
 
 ###############################################################
