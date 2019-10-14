@@ -614,6 +614,15 @@ array_05
 array_06 = np.random.rand(5,3)  
 array_06
 
+#################################
+# Insert data to columns / rows #
+#################################
+# possible to imput any numbers with indexing
+
+array_06[0,:] = [1,2,3]
+array_06
+
+
 ################################
 # Convert pandas df to ndarray #
 ################################
@@ -629,6 +638,7 @@ dataframe_01.values
 ###########################
 # Delete rows and columns #
 ###########################
+# np.delete(arr, obj, axis)
 
 array_02
 
@@ -639,7 +649,8 @@ np.delete(array_02, [0,1], 0) # delete list of rows
 np.delete(array_02, 0, 1) # delete 1 column
 np.delete(array_02, [0,1], 1) # delete list of column
 
-
+np.delete(array_02, np.s_[0:1],0) # delete rows slice
+np.delete(array_02, np.s_[0:1],0) # delete columns slice
 
 
 ###############################################################
@@ -775,6 +786,7 @@ dataframe_03
 ################################
 # DataFrame indexing with iloc #
 ################################
+# integer based location
 
 dataframe_01
 dataframe_01.iloc[0,0] # get particular value
@@ -799,8 +811,10 @@ dataframe_01.iloc[[0,1],[0,1,2]] # slice
 ###############################
 # DataFrame indexing with loc #
 ###############################
+# label based location
 
 dataframe_01
+dataframe_01.loc[:,['A']] # get particular column
 dataframe_01.loc[[0,1],['A']] # get particular rows and columns
 dataframe_01.loc[0:2,['A','B']] # get rows slice and columns (involving row 2)
 
@@ -820,9 +834,9 @@ dataframe_01.dtypes
 
 
 
-#################
-# eval() method #
-#################
+##################
+# query() method #
+##################
 # High performance memory-saving query
 
 
