@@ -797,12 +797,39 @@ dataframe_03
 
 del dataframe_03['a']
 
+#or
+dataframe_03.drop(['a','b'], axis=1, inplace=False)
+dataframe_03.drop(dataframe_03.columns[[0, 1]], axis=1, inplace=False) 
+
+
+
+#################
+# Rows deletion #
+#################
+
+dataframe_03.drop(dataframe_03.index[[0,1]])
 
 
 
 ###############################################################
 # Merging #
 #!#########
+
+dataframe_04 = pd.DataFrame(np.arange(1,5).reshape(2,2))
+dataframe_05 = pd.DataFrame(np.arange(5,9).reshape(2,2))
+
+########################
+# merge dfs vertically #
+########################
+
+pd.concat([dataframe_04, dataframe_05], axis=0, sort=False)
+
+
+##########################
+# merge dfs horizontally #
+##########################
+
+pd.concat([dataframe_04, dataframe_05], axis=1, sort=False)
 
 
 ###############################################################
@@ -843,6 +870,17 @@ dataframe_01
 dataframe_01.loc[:,['A']] # get particular column
 dataframe_01.loc[[0,1],['A']] # get particular rows and columns
 dataframe_01.loc[0:2,['A','B']] # get rows slice and columns (involving row 2)
+
+
+
+######################################
+# DataFrame slicing under conditions #
+######################################
+
+dataframe_01[dataframe_01.A != 5]
+
+dataframe_01[dataframe_01.A > 2][dataframe_01.B > 6]
+
 
 
 ######################
@@ -907,40 +945,6 @@ sql("select * from dataframe_01")
 
 
 
-###############################################################################
-# pandas series #
-#!###############
-
-
-
-###############################################################
-# Insertion #
-#!###########
-
-
-###############################################################
-# Deletion #
-#!##########
-
-
-###############################################################
-# Merging #
-#!#########
-
-
-###############################################################
-# Searching #
-#!###########
-
-
-###############################################################
-# Traversal #
-#!###########
-
-
-###############################################################
-# Sorting #
-#!#########
 
 
 
