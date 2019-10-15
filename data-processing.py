@@ -711,6 +711,22 @@ array_09 = np.ones((4,4))
 array_09
 array_09[0,0] = 'nan'
 
+#######################
+# Iterate over column #
+#######################
+
+[i for i in array_02[:,0]]
+
+
+########################
+# Iterate over ndarray #
+########################
+
+for (x,y),value in np.ndenumerate(array_02):
+    print(x,y,value)
+
+list(np.ndenumerate(array_02))
+
 
 ###################################
 # Convert all NaN values to zeros #
@@ -719,23 +735,21 @@ array_09[0,0] = 'nan'
 np.nan_to_num(array_09, copy=False)
 
 
-########################
-# Iterate over ndarray #
-########################
-
-array_10 = np.arange(0,18).reshape(6,3)
-array_10
-
-for (x,y),value in np.ndenumerate(array_10):
-    print(x,y,value)
-
 
 ###############################################################
 # Sorting #
 #!#########
 
 # Sort array according to choosen column
-array_10[array_10[:,1].argsort()]
+array_09[array_09[:,1].argsort()]
+
+
+
+
+
+
+
+
 
 
 
@@ -755,9 +769,12 @@ matters) using ndarray as 1st argument.
 # Insertion #
 #!###########
 
+#################################
+# Create DataFrame from ndarray #
+#################################
+
 import pandas as pd
 
-# create 5x3 pandas DataFrame from ndarray
 dataframe_01 = pd.DataFrame(np.arange(1,21).reshape((5,4)),index=range(0,5,1), 
                             columns=list('ABCD'))
 dataframe_01
@@ -787,6 +804,18 @@ dataframe_03 = pd.DataFrame(dataframe_02.values, index = [0,1,2], columns=['a','
 dataframe_03
 
 
+######################
+# Convert dict to df #
+######################
+
+dictionary = {'one': ['A', 'B', 'C', 'D'], 
+              'two': [1, 2, 3, 4], 
+              'three': ['a', 'b', 'c', 'd']}
+
+dataframe = pd.DataFrame(dictionary)
+
+
+
 ###############################################################
 # Deletion #
 #!##########
@@ -802,14 +831,12 @@ dataframe_03.drop(['a','b'], axis=1, inplace=False)
 dataframe_03.drop(dataframe_03.columns[[0, 1]], axis=1, inplace=False) 
 
 
-
 #################
 # Rows deletion #
 #################
 
 dataframe_03.drop(dataframe_03.index[[0,1]])
-
-
+dataframe_03.drop(dataframe_03.index[[range(2)]])
 
 ###############################################################
 # Merging #
@@ -832,9 +859,35 @@ pd.concat([dataframe_04, dataframe_05], axis=0, sort=False)
 pd.concat([dataframe_04, dataframe_05], axis=1, sort=False)
 
 
+###########################
+# Add column to pandas df #
+###########################
+
+dataframe_05[2] = ['one','two']
+
+
+
 ###############################################################
 # Searching #
 #!###########
+
+######################
+# DataFrame indexing #
+######################
+
+dataframe_01[['A']] # get column as df
+dataframe_01.A # get column as pd series
+dataframe_01.A[0] # get particular value from column
+
+
+######################################
+# DataFrame slicing under conditions #
+######################################
+
+dataframe_01[dataframe_01.A != 5]
+
+dataframe_01[dataframe_01.A > 2][dataframe_01.B > 6]
+
 
 ################################
 # DataFrame indexing with iloc #
@@ -872,23 +925,11 @@ dataframe_01.loc[[0,1],['A']] # get particular rows and columns
 dataframe_01.loc[0:2,['A','B']] # get rows slice and columns (involving row 2)
 
 
-
-######################################
-# DataFrame slicing under conditions #
-######################################
-
-dataframe_01[dataframe_01.A != 5]
-
-dataframe_01[dataframe_01.A > 2][dataframe_01.B > 6]
-
-
-
 ######################
 # Check column types #
 ######################
 
 dataframe_01.dtypes
-
 
 
 #################
@@ -936,13 +977,51 @@ sql("select * from dataframe_01")
 # Traversal #
 #!###########
 
+#######################
+# Iterate over column #
+#######################
+
+[i**2 for i in dataframe_01.A]
+
+dataframe_01.A = [i**2 for i in dataframe_01.A]
+
+dataframe_01.A = [i**2 for i in dataframe_01.A]
+
+
+####################
+# Iterate over row #
+####################
+# using numpy array
+
+# Iterate over choosen row
+[i**2 for i in dataframe_01.values[0,:]]
+# Iterate over choosen row and assign values
+dataframe_01.iloc[[0],:] = [i**2 for i in dataframe_01.values[0,:]]
+
+
+#########################
+# Iterate over whole df #
+#########################
+# using ndarray
+
+[i**2 for i in dataframe_01.values]
+dataframe_01 = pd.DataFrame([i**2 for i in dataframe_01.values])
+
+
+dataframe_01 = pd.DataFrame(np.arange(1,21).reshape((5,4)),index=range(0,5,1), 
+                            columns=list('ABCD'))
+dataframe_01
+
+
 
 ###############################################################
 # Sorting #
 #!#########
 
+dataframe_07 = pd.DataFrame(np.random.randint(0,10,100).reshape(25,4))
 
-
+# Sorty df by 2, and 3 columns
+dataframe_07.sort_values([2,3], ascending=True)
 
 
 
