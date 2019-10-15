@@ -568,7 +568,7 @@ import numpy as np
 
 # Convert list/tuple/set to ndarray (set first convert to list)
 array_01 = np.array([1,2,3,4,5]).reshape(5,1)
-type(array_01)
+array_01
 
 # Convert list of lists to ndarray 
 array_02 = np.array([[1, 2, 3],
@@ -621,6 +621,8 @@ array_06
 
 array_06[0,:] = [1,2,3]
 array_06
+array_06[0,:] = 1
+array_06
 
 
 ################################
@@ -650,7 +652,9 @@ np.delete(array_02, 0, 1) # delete 1 column
 np.delete(array_02, [0,1], 1) # delete list of column
 
 np.delete(array_02, np.s_[0:1],0) # delete rows slice
-np.delete(array_02, np.s_[0:1],0) # delete columns slice
+#or
+np.delete(array_02, slice(0,1),0) # delete rows slice
+np.delete(array_02, np.s_[0:1],1) # delete columns slice
 
 
 ###############################################################
@@ -658,7 +662,12 @@ np.delete(array_02, np.s_[0:1],0) # delete columns slice
 #!#########
 
 # merge arrays (horizontal concatenation)
-np.concatenate((array_02, array_01), axis=1)
+array_07 = np.concatenate((array_02, array_01), axis=1)
+
+# merge arrays (vertical concatenation)
+array_08 = np.expand_dims(np.arange(4), axis=0) # (added one more dim)
+np.concatenate((array_07, array_08), axis=0)
+
 
 
 ###############################################################
@@ -680,6 +689,7 @@ array_09[:,0:2]
 array_09[[0,1],:]
 
 
+
 ################################
 # Check which elements are NaN #
 ################################
@@ -690,7 +700,6 @@ np.isnan(array_09)
 # Return ndarray with indices of NaN
 np.argwhere(np.isnan(array_09))
 
-array_09.nan
 
 
 ###############################################################
@@ -710,11 +719,23 @@ array_09[0,0] = 'nan'
 np.nan_to_num(array_09, copy=False)
 
 
+########################
+# Iterate over ndarray #
+########################
+
+array_10 = np.arange(0,18).reshape(6,3)
+array_10
+
+for (x,y),value in np.ndenumerate(array_10):
+    print(x,y,value)
+
+
 ###############################################################
 # Sorting #
 #!#########
 
-
+# Sort array according to choosen column
+array_10[array_10[:,1].argsort()]
 
 
 
@@ -770,6 +791,11 @@ dataframe_03
 # Deletion #
 #!##########
 
+###################
+# Column deletion #
+###################
+
+del dataframe_03['a']
 
 
 
