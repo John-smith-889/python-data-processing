@@ -864,6 +864,7 @@ pd.concat([dataframe_04, dataframe_05], axis=1, sort=False)
 ###########################
 
 dataframe_05[2] = ['one','two']
+dataframe_05['A'] = [6,7]
 
 
 
@@ -932,19 +933,14 @@ dataframe_01.loc[0:2,['A','B']] # get rows slice and columns (involving row 2)
 dataframe_01.dtypes
 
 
-#################
-# eval() method #
-#################
-# High performance memory-saving query
-
-
-
 ##################
 # query() method #
 ##################
 # High performance memory-saving query
 
-
+# Query df according to conditions
+dataframe_01
+dataframe_01.query('A>1 and B>3 and D in[8,12,16]', inplace = False)
 
 
 ####################
@@ -973,6 +969,19 @@ sql = lambda query: ps.sqldf(query, globals())
 sql("select * from dataframe_01")
 
 
+
+##################################
+# Checking frequencies of values #
+##################################
+# value_counts() has to be performed on pd series
+
+# Frequencies of choosen column
+dataframe_07[0].value_counts()
+
+# Frequencies of choosen row
+dataframe_01.iloc[0].value_counts()
+
+
 ###############################################################
 # Traversal #
 #!###########
@@ -982,9 +991,9 @@ sql("select * from dataframe_01")
 #######################
 
 [i**2 for i in dataframe_01.A]
+[i**2 for i in dataframe_01[0]]
 
-dataframe_01.A = [i**2 for i in dataframe_01.A]
-
+# assign list as a new A column
 dataframe_01.A = [i**2 for i in dataframe_01.A]
 
 
@@ -1011,6 +1020,16 @@ dataframe_01 = pd.DataFrame([i**2 for i in dataframe_01.values])
 dataframe_01 = pd.DataFrame(np.arange(1,21).reshape((5,4)),index=range(0,5,1), 
                             columns=list('ABCD'))
 dataframe_01
+
+
+#################
+# eval() method #
+#################
+# High performance memory-saving operation
+
+# Create new column according to operations
+dataframe_01.eval('E = A + B+C', inplace = False)
+dataframe_01.eval('F = A**2', inplace = False)
 
 
 
