@@ -718,6 +718,13 @@ array_09[0,0] = 'nan'
 [i for i in array_02[:,0]]
 
 
+####################
+# Iterate over row #
+####################
+
+[i for i in array_02[0,:]]
+
+
 ########################
 # Iterate over ndarray #
 ########################
