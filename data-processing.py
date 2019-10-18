@@ -676,19 +676,21 @@ np.concatenate((array_07, array_08), axis=0)
 
 import numpy as np
 
-array_09 = np.random.randint(0,2,10).reshape(2,5).T
-
+array_09 = np.random.randint(0,2,12).reshape(4,3)
+array_09
 
 ############
 # Indexing #
 ############
 # intuitive indexing
 
-array_09[:,0:2]
-array_09[[0,1],:]
+array_09[:,0:2] # get columns slice
+array_09[[0,1],:] # get list of rows
+array_09[[0],:] # square brackets keep sliced row/column 2-dimensional
+
 
 # create array which consists of choosen multiple rows indexed by choosen column values
-array_10[array_10[:,1]] 
+array_09[array_09[:,1]] 
 
 ################################
 # Check which elements are NaN #
@@ -701,7 +703,6 @@ np.isnan(array_09)
 
 # Return ndarray with indices of NaN
 np.argwhere(np.isnan(array_09))
-wtf
 
 
 ###############################################################
@@ -731,10 +732,15 @@ array_09[0,0] = 'nan'
 # Iterate over ndarray #
 ########################
 
+# For loop
 for (x,y),value in np.ndenumerate(array_02):
     print(x,y,value)
 
 list(np.ndenumerate(array_02))
+
+# List comprehension
+[i for (x,y),i in np.ndenumerate(array_04) if x == 0 and y ==4 ]
+
 
 
 ###################################
