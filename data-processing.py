@@ -1040,6 +1040,34 @@ dataframe_01.eval('F = A**2', inplace = False)
 
 
 
+
+
+#####################
+# Create crosstable #
+#####################
+
+import pandas as pd
+import numpy as np
+
+# Create 2 variables
+city_1 = (['sunny','cloudy','rainy','rainy','sunny','sunny','cloudy','rainy','rainy','sunny'])
+city_2 = (['rainy','cloudy','rainy','cloudy','sunny', 'cloudy','rainy','cloudy', 'cloudy','sunny' ])
+# Merge data into ndarray
+array_01 = np.array([city_1,city_2])
+array_01 = array_01.T
+array_01
+
+# Create joint probabilities and margin probabilities 
+df_02 = pd.crosstab(df_01.iloc[:,0], df_01.iloc[:,1], margins=True, margins_name="Total")
+df_02
+
+a = df_02.iloc[0:-1,3]
+b = df_02.iloc[-1,0:-1]
+
+
+
+
+
 ###############################################################
 # Sorting #
 #!#########
