@@ -675,9 +675,8 @@ np.concatenate((array_07, array_08), axis=0)
 #!###########
 
 import numpy as np
-array_09 = np.ones((4,4))
-array_09
-array_09[0,0] = 'nan'
+
+array_09 = np.random.randint(0,2,10).reshape(2,5).T
 
 
 ############
@@ -688,18 +687,21 @@ array_09[0,0] = 'nan'
 array_09[:,0:2]
 array_09[[0,1],:]
 
-
+# create array which consists of choosen multiple rows indexed by choosen column values
+array_10[array_10[:,1]] 
 
 ################################
 # Check which elements are NaN #
 ################################
+array_10 = np.round(np.random.random(10).reshape(5,2), decimals = 2)
+array_10[0,0] = 'nan' # nan cannot be imputed to integer type ndarray
 
 # Return bool ndarray
 np.isnan(array_09)
 
 # Return ndarray with indices of NaN
 np.argwhere(np.isnan(array_09))
-
+wtf
 
 
 ###############################################################
@@ -742,16 +744,35 @@ list(np.ndenumerate(array_02))
 np.nan_to_num(array_09, copy=False)
 
 
+#########
+# Round #
+#########
+
+array_11 = np.round(np.random.random(10), decimals = 2)
+
+
 
 ###############################################################
 # Sorting #
 #!#########
 
-# Sort array according to choosen column
-array_09[array_09[:,1].argsort()]
+array_12 = np.random.randint(0,2,12).reshape(3,4).T
+array_12
+
+##########################################
+# Sort array according to choosen column #
+##########################################
+
+array_12[array_12[:,1].argsort()]
 
 
+###################################
+# Sort columns/rows independently #
+###################################
 
+# sort columns ascending (columns/rows sorted independently)
+np.sort(array_06, axis=0) 
+np.sort(array_06, axis=1)
 
 
 
@@ -1053,18 +1074,24 @@ import numpy as np
 city_1 = (['sunny','cloudy','rainy','rainy','sunny','sunny','cloudy','rainy','rainy','sunny'])
 city_2 = (['rainy','cloudy','rainy','cloudy','sunny', 'cloudy','rainy','cloudy', 'cloudy','sunny' ])
 # Merge data into ndarray
-array_01 = np.array([city_1,city_2])
-array_01 = array_01.T
+array_01 = np.array([city_1,city_2]).T
 array_01
+df_01 = pd.DataFrame(array_01)
 
 # Create joint probabilities and margin probabilities 
 df_02 = pd.crosstab(df_01.iloc[:,0], df_01.iloc[:,1], margins=True, margins_name="Total")
 df_02
 
-a = df_02.iloc[0:-1,3]
-b = df_02.iloc[-1,0:-1]
 
+# or
 
+a = list('abbaabbabababbabbbabbbabbbabbab')
+b = list('abbabbbabbbabbbabbbbbbabbbaaabb')
+a2 = np.array([a,b]).T
+a2
+df = pd.DataFrame(a2,columns=['a','b'])
+df2 = pd.crosstab(df.a,df.b, margins = True, normalize = True)
+df2
 
 
 
@@ -1074,8 +1101,12 @@ b = df_02.iloc[-1,0:-1]
 
 dataframe_07 = pd.DataFrame(np.random.randint(0,10,100).reshape(25,4))
 
-# Sorty df by 2, and 3 columns
-dataframe_07.sort_values([2,3], ascending=True)
+# Sort df by choosen list of columns
+dataframe_07.sort_values([2,3], axis = 0, ascending=True)
+
+
+# Sort df by choosen list of rows
+dataframe_07.sort_values([2,3], axis = 1, ascending=True)
 
 
 
