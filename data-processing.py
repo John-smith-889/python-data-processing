@@ -910,7 +910,7 @@ dataframe_05['A'] = [6,7]
 # DataFrame indexing #
 ######################
 
-dataframe_01[['A']] # get column as df
+dataframe_01[['A','B']] # get column as df
 dataframe_01.A # get column as pd series
 dataframe_01.A[0] # get particular value from column
 
@@ -1109,7 +1109,8 @@ dataframe_07 = pd.DataFrame(np.random.randint(0,10,100).reshape(25,4))
 
 # Sort df by choosen list of columns
 dataframe_07.sort_values([2,3], axis = 0, ascending=True)
-
+# or
+dataframe_07.sort_values(by='column_name', axis = 0, ascending=True)
 
 # Sort df by choosen list of rows
 dataframe_07.sort_values([2,3], axis = 1, ascending=True)
