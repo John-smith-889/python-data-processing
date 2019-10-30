@@ -206,9 +206,9 @@ list(map(round,list_09))
 
 
 
-##################################################
-# create list of tuples/list with existing lists # with zip function
-##################################################
+###################################################
+# create list/tuple of tuples with existing lists # with zip function
+###################################################
 
 list_11 = list(zip(list_02,list_03))
 list_11
