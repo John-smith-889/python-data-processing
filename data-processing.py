@@ -579,6 +579,24 @@ array_02 = np.array([[1, 2, 3],
 array_02
 
 
+#################################
+# Insert data to columns / rows #
+#################################
+# possible to imput any numbers with indexing
+
+array_02[0,:] = [1,2,5]
+array_02
+array_02[0,:] = 1
+array_02
+
+
+################################
+# Convert pandas df to ndarray #
+################################
+
+dataframe_01.values
+
+
 #######################################
 # Create ndarray with arange() method #
 #######################################
@@ -611,25 +629,10 @@ array_05
 ######################################
 # (unifform [0,1) distribution)
 
-array_06 = np.random.rand(5,3)  
-array_06
-
-#################################
-# Insert data to columns / rows #
-#################################
-# possible to imput any numbers with indexing
-
-array_06[0,:] = [1,2,3]
-array_06
-array_06[0,:] = 1
+array_06 = np.random.rand(4,2)  
 array_06
 
 
-################################
-# Convert pandas df to ndarray #
-################################
-
-dataframe_01.values
 
          
                 
@@ -662,10 +665,13 @@ np.delete(array_02, np.s_[0:1],1) # delete columns slice
 #!#########
 
 # merge arrays (horizontal concatenation)
-array_07 = np.concatenate((array_02, array_01), axis=1)
+array_07 = np.concatenate((array_06, array_06), axis=1)
 
 # merge arrays (vertical concatenation)
+array_08 = np.arange(4).reshape(1,4)
+# or 
 array_08 = np.expand_dims(np.arange(4), axis=0) # (added one more dim)
+
 np.concatenate((array_07, array_08), axis=0)
 
 
