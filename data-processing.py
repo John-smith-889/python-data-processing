@@ -697,41 +697,39 @@ array_09[[0],:] # square brackets keep sliced row/column 2-dimensional
 
 # create array which consists of choosen multiple rows indexed by choosen column values
 array_09[array_09[:,1]] 
+# or
+array_09[[1,0,0,1]]
 
 ################################
 # Check which elements are NaN #
 ################################
 array_10 = np.round(np.random.random(10).reshape(5,2), decimals = 2)
 array_10[0,0] = 'nan' # nan cannot be imputed to integer type ndarray
+array_10
 
 # Return bool ndarray
-np.isnan(array_09)
+np.isnan(array_10)
 
 # Return ndarray with indices of NaN
-np.argwhere(np.isnan(array_09))
+np.argwhere(np.isnan(array_10))
 
 
 ###############################################################
 # Traversal #
 #!###########
 
-import numpy as np
-array_09 = np.ones((4,4))
-array_09
-array_09[0,0] = 'nan'
-
 #######################
 # Iterate over column #
 #######################
 
-[i for i in array_02[:,0]]
+[i for i in array_10[:,0]]
 
 
 ####################
 # Iterate over row #
 ####################
 
-[i for i in array_02[0,:]]
+[i for i in array_10[0,:]]
 
 
 ########################
@@ -745,7 +743,7 @@ for (x,y),value in np.ndenumerate(array_02):
 list(np.ndenumerate(array_02))
 
 # List comprehension
-[i for (x,y),i in np.ndenumerate(array_04) if x == 0 and y ==4 ]
+[i for (x,y),i in np.ndenumerate(array_04) if x == 0 and y == 2 ]
 
 
 
@@ -753,7 +751,7 @@ list(np.ndenumerate(array_02))
 # Convert all NaN values to zeros #
 ###################################
 
-np.nan_to_num(array_09, copy=False)
+np.nan_to_num(array_10, copy=False)
 
 
 #########
@@ -776,6 +774,9 @@ array_12
 ##########################################
 
 array_12[array_12[:,1].argsort()]
+# 1) take column - array_12[:,1]
+# 2) return list with indexing column elements - array_12[:,1].argsort() 
+# 3) apply those indices to whole ndarray as recombining row order
 
 
 ###################################
