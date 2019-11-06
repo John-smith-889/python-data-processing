@@ -645,7 +645,7 @@ array_06
 ###########################
 # np.delete(arr, obj, axis)
 
-array_02
+del array_06 # delate whole array
 
 np.delete(array_02, 0, 0) # delete 1 row
 np.delete(array_02, 1, 0) # delete 2 row
@@ -663,6 +663,9 @@ np.delete(array_02, np.s_[0:1],1) # delete columns slice
 ###############################################################
 # Merging #
 #!#########
+
+array_06 = np.random.rand(4,2)  
+array_06
 
 # merge arrays (horizontal concatenation)
 array_07 = np.concatenate((array_06, array_06), axis=1)
