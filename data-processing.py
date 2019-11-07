@@ -772,14 +772,21 @@ array_11 = np.round(np.random.random(10), decimals = 2)
 array_12 = np.random.randint(0,2,12).reshape(3,4).T
 array_12
 
-##########################################
-# Sort array according to choosen column #
-##########################################
+#################################################
+# Sort array according to sorted choosen column #
+#################################################
 
 array_12[array_12[:,1].argsort()]
 # 1) take column - array_12[:,1]
 # 2) return list with indexing column elements - array_12[:,1].argsort() 
 # 3) apply those indices to whole ndarray as recombining row order
+
+
+##############################################
+# Sort array according to sorted choosen row #
+##############################################
+
+array_12[:,np.argsort(array_10[0,:])]
 
 
 ###################################
