@@ -668,7 +668,8 @@ array_06 = np.random.rand(4,2)
 array_06
 
 # merge arrays (horizontal concatenation)
-array_07 = np.concatenate((array_06, array_06), axis=1)
+np.concatenate([array_06, array_06], axis=1)
+np.concatenate([array_06, array_06, array_06], axis=1)
 
 # merge arrays (vertical concatenation)
 array_08 = np.arange(4).reshape(1,4)
@@ -831,11 +832,23 @@ dataframe_01 = pd.DataFrame(np.arange(1,21).reshape((5,4)),index=range(0,5,1),
 dataframe_01
 
 
+######################
+# Convert dict to df #
+######################
+
+dict_01 = {'one': ['A', 'B', 'C', 'D'], 
+              'two': [1, 2, 3, 4], 
+              'three': ['a', 'b', 'c', 'd']}
+
+dataframe_02 = pd.DataFrame(dict_01)
+
+
+
 ###################################
 # Create DataFrame from .csv file #
 ###################################
 
-dataframe_02 = pd.read_csv("numbers3.csv", 
+dataframe_03 = pd.read_csv("numbers3.csv", 
                            sep = ',', # also alias "delimiter"
                            header = None, # which row take as a column names
                            # None - names are generated from 0 up
@@ -847,23 +860,13 @@ dataframe_02 = pd.read_csv("numbers3.csv",
                            index_col = None, # set particular column as index
                            decimal = '.') 
 # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html
-dataframe_02
-
-
-# Change index and column names
-dataframe_03 = pd.DataFrame(dataframe_02.values, index = [0,1,2], columns=['a','b','c'])
 dataframe_03
 
 
-######################
-# Convert dict to df #
-######################
+# Change index and column names
+dataframe_03 = pd.DataFrame(dataframe_03.values, index = [0,1,2], columns=['a','b','c'])
+dataframe_03
 
-dictionary = {'one': ['A', 'B', 'C', 'D'], 
-              'two': [1, 2, 3, 4], 
-              'three': ['a', 'b', 'c', 'd']}
-
-dataframe = pd.DataFrame(dictionary)
 
 
 
@@ -886,6 +889,9 @@ dataframe_03.drop(dataframe_03.columns[[0, 1]], axis=1, inplace=False)
 # Rows deletion #
 #################
 
+dataframe_03.drop([0,1], axis=0, inplace=False)
+dataframe_03.drop(range(2), axis=0, inplace=False)
+# or
 dataframe_03.drop(dataframe_03.index[[0,1]])
 dataframe_03.drop(dataframe_03.index[[range(2)]])
 
@@ -900,7 +906,7 @@ dataframe_05 = pd.DataFrame(np.arange(5,9).reshape(2,2))
 # merge dfs vertically #
 ########################
 
-pd.concat([dataframe_04, dataframe_05], axis=0, sort=False)
+pd.concat([dataframe_04, dataframe_05, dataframe_05], axis=0, sort=False)
 
 
 ##########################
