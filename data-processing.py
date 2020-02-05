@@ -83,9 +83,11 @@ print(list_04)
 
 import numpy as np 
 
-list_05 = list(np.arange(10,20,0.1))
+# Convert np array to list (with numpy integers to primitive int)
+list_05 = np.arange(10,20,0.1).tolist()
 print(list_05)
 
+# Convert np array to list (still with numpy types)
 list_06 = list(np.arange(20,10,-0.1))
 print(list_06)
 
@@ -880,7 +882,7 @@ dataframe_03
 
 del dataframe_03['a']
 
-#or
+# or
 dataframe_03.drop(['a','b'], axis=1, inplace=False)
 dataframe_03.drop(dataframe_03.columns[[0, 1]], axis=1, inplace=False) 
 
