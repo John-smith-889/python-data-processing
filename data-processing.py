@@ -123,7 +123,28 @@ list_07
 # merge 2 lists #
 #################
 
-list_03 + list_04
+list_03 + 
+
+
+###################################################
+# create list/tuple of tuples with existing lists # with zip function
+###################################################
+
+list_11 = list(zip(list_02,list_03))
+list_11
+
+
+#################################################
+# create list of tuples/list with existing list # with list comprehension
+#################################################
+
+list_12 = [(i,2) for i in list_03]
+list_12
+
+# take only even elements 
+list_13 = [(i,2) for i in list_03 if i % 2 == 0]
+list_13
+
 
 
 ###############################################################
@@ -208,23 +229,9 @@ list(map(round,list_09))
 
 
 
-###################################################
-# create list/tuple of tuples with existing lists # with zip function
-###################################################
-
-list_11 = list(zip(list_02,list_03))
-list_11
-
-#################################################
-# create list of tuples/list with existing list # with list comprehension
-#################################################
-
-list_12 = [(i,2) for i in list_03]
-list_12
-
-# take only even elements 
-list_13 = [(i,2) for i in list_03 if i % 2 == 0]
-list_13
+#################################
+# transform elements form lists # with list comprehension
+#################################
 
 # Use nested list comprehension for generate tuples 
 list_14 = [tuple( enum + j for j in list_04) for enum, i in enumerate(list_03)]
