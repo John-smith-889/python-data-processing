@@ -834,6 +834,7 @@ matters) using ndarray as 1st argument.
 # Create DataFrame from ndarray #
 #################################
 
+import numpy as np
 import pandas as pd
 
 dataframe_01 = pd.DataFrame(np.arange(1,21).reshape((5,4)),index=range(0,5,1), 
