@@ -652,7 +652,7 @@ array_06
 ###########################
 # Delete rows and columns #
 ###########################
-# np.delete(arr, obj, axis)
+# np.delete(arr, obj, axis = None)
 
 del array_06 # delate whole array
 
@@ -697,7 +697,6 @@ import numpy as np
 
 array_09 = np.random.randint(0,2,12).reshape(4,3)
 array_09
-
 ############
 # Indexing #
 ############
@@ -933,6 +932,9 @@ pd.concat([dataframe_04, dataframe_05], axis=1, sort=False)
 dataframe_05[2] = ['one','two']
 dataframe_05['A'] = [6,7]
 
+
+column_01 = ['one','two']
+dataframe_05[3] = column_01
 
 
 ###############################################################
