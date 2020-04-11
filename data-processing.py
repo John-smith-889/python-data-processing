@@ -697,12 +697,14 @@ import numpy as np
 
 array_09 = np.random.randint(0,2,12).reshape(4,3)
 array_09
+
 ############
 # Indexing #
 ############
 # intuitive indexing
 
 array_09[:,0:2] # get columns slice
+array_09[0] # get first row
 array_09[[0,1],:] # get list of rows
 array_09[[0],:] # square brackets keep sliced row/column 2-dimensional
 
