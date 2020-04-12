@@ -654,6 +654,11 @@ array_06
 ###########################
 # np.delete(arr, obj, axis = None)
 
+# arr : Numpy array.
+# obj : index position or list of index positions.
+# axis : Axis along which we want to delete. If 1 then dlete columns, 
+# if 0 then delete rows and if None then apply delete on flattened array.
+
 del array_06 # delate whole array
 
 np.delete(array_02, 0, 0) # delete 1 row
