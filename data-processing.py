@@ -905,7 +905,8 @@ dataframe_03.drop(dataframe_03.columns[[0, 1]], axis=1, inplace=False)
 # Rows deletion #
 #################
 
-dataframe_03.drop([0,1], axis=0, inplace=False)
+dataframe_03.drop([0,1], axis=0, inplace=False) # works if rows has proper 
+                                                # indices '0', and '1'
 dataframe_03.drop(range(2), axis=0, inplace=False)
 # or
 dataframe_03.drop(dataframe_03.index[[0,1]])
