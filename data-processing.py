@@ -874,7 +874,8 @@ dataframe_03 = pd.read_csv("numbers3.csv",
                            skiprows = 0, # how many rows skip
                            nrows = 4, # number of rows we want to import
                            index_col = None, # set particular column as index
-                           decimal = '.') 
+                           decimal = '.',
+                           dtype={"a": int} ) #values: float, int, object
 # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html
 dataframe_03
 
