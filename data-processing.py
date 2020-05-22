@@ -967,6 +967,8 @@ dataframe_01[dataframe_01.A != 5]
 
 dataframe_01[dataframe_01.A > 2][dataframe_01.B > 6]
 
+# Take value of column B from row which meet condition of column A
+dataframe_01[dataframe_01.A == 5]['B']
 
 ################################
 # DataFrame indexing with iloc #
