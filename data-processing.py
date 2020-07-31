@@ -962,6 +962,7 @@ dataframe_01.A[0] # get particular value from column
 ######################################
 # DataFrame slicing under conditions #
 ######################################
+# filtering
 
 dataframe_01[dataframe_01.A != 5]
 
