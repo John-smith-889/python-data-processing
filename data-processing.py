@@ -976,6 +976,9 @@ dataframe_01[dataframe_01.A == 5]['B']
 ################################
 # integer based location
 
+# double, nested brackets enforce DataFrame output 
+# single brackets enforce Series output
+
 dataframe_01
 dataframe_01.iloc[0,0] # get particular value
 
