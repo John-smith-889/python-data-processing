@@ -1157,13 +1157,21 @@ df2
 
 dataframe_07 = pd.DataFrame(np.random.randint(0,10,100).reshape(25,4))
 
+# Sort dataframe by choosen column
+dataframe_07.sort_values(by=2, # sort by third column with name '2'
+                         axis = 0, # sort rows, ('1' - sort columns) 
+                         ascending=True,
+                         inplace=False, # not overwrite current df with results
+                         kind='quicksort', # quicksort method
+                         na_position='last') # situate n/a as the last
+
 # Sort df by choosen list of columns
-dataframe_07.sort_values([2,3], axis = 0, ascending=True)
+dataframe_07.sort_values(by=[2,3], 
+                         axis = 0, 
+                         ascending=True)
 # or
 dataframe_07.sort_values(by='column_name', axis = 0, ascending=True)
 
-# Sort df by choosen list of rows
-dataframe_07.sort_values([2,3], axis = 1, ascending=True)
 
 
 
