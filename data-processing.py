@@ -859,6 +859,18 @@ dict_01 = {'one': ['A', 'B', 'C', 'D'],
 dataframe_02 = pd.DataFrame(dict_01)
 
 
+######################
+# Convert list to df #
+######################
+# first element of each tuple is in one column
+
+list_00 = [('one', 'A', 'B', 'C', 'D'), 
+           ('two', 1, 2, 3, 4), 
+           ('three', 'a', 'b', 'c', 'd')]
+
+dataframe_02 = pd.DataFrame.from_records(list_00)
+
+
 
 ###################################
 # Create DataFrame from .csv file #
