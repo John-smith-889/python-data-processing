@@ -30,8 +30,14 @@ _______________________________________________________________________________
 _______________________________________________________________________________
 
 *  Traversal: processing all the data elements present in it.
+   
    May be combined with searching if traversal is done under condition.
     
+   In general to search (section above) in some data structure we need also 
+   to traverse it or iterate over it. So Every search consists some
+   form of traversal. In this section we focus on traversal 
+   with not only searching but modificiation of data structire elements.
+   
 _______________________________________________________________________________
 
 *  Sorting: Arranging data elements of a data structure in a specified order.
