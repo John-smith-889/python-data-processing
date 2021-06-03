@@ -853,6 +853,10 @@ dataframe_01 = pd.DataFrame(np.arange(1,21).reshape((5,4)),index=range(0,5,1),
                             columns=list('ABCD'))
 dataframe_01
 
+# Add a new row to dataframe
+new_row = {'A':9, 'B':9, 'C':9, 'D':9}
+dataframe_01.append(new_row, ignore_index=True)
+
 
 ######################
 # Convert dict to df #
@@ -1078,7 +1082,7 @@ sql("select * from dataframe_01")
 # value_counts() has to be performed on pd series
 
 # Frequencies of choosen column
-dataframe_07[0].value_counts()
+dataframe_01[0].value_counts()
 
 # Frequencies of choosen row
 dataframe_01.iloc[0].value_counts()
