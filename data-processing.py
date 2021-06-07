@@ -1138,7 +1138,25 @@ dataframe_01.eval('E = A + B+C', inplace = False)
 dataframe_01.eval('F = A**2', inplace = False)
 
 
+#==========================#
+# multiply df times vector #
+#==========================#
 
+import pandas as pd
+
+import numpy as np
+
+dataframe_01 = pd.DataFrame(np.arange(1,21).reshape((5,4)),index=range(0,5,1), 
+                            columns=list('ABCD'))
+dataframe_01
+
+# multiply each row value times one number
+y=[10,10,10,10, 100]
+dataframe_01.multiply(y, axis=0)
+
+# multiply each column value times one number
+y=[10,10,10,100]
+dataframe_01.multiply(y, axis=1)
 
 
 #####################
