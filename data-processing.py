@@ -861,6 +861,7 @@ dataframe_01.append(new_row, ignore_index=True)
 ######################
 # Convert dict to df #
 ######################
+# each key - value pair is in one column
 
 dict_01 = {'one': ['A', 'B', 'C', 'D'], 
               'two': [1, 2, 3, 4], 
