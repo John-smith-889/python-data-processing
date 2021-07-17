@@ -822,6 +822,20 @@ np.sort(array_06, axis=1)
 
 
 
+###############################################################################
+# pandas series #
+#!###############
+
+"""
+Pandas series is a data structure similar to data frame with a few differences.
+It has index and only one column.
+
+Series is build on ndarray. We may extract 1 dimensional ndarray 
+from pandas Series using .values method.
+
+We may create pandas Series with Series() method (Capital letters
+matters) using ndarray as 1st argument, or other data structures.   
+"""
 
 
 
@@ -906,7 +920,6 @@ dataframe_03
 # Change index and column names
 dataframe_03 = pd.DataFrame(dataframe_03.values, index = [0,1,2], columns=['a','b','c'])
 dataframe_03
-
 
 
 
