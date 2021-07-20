@@ -837,7 +837,28 @@ We may create pandas Series with Series() method (Capital letters
 matters) using ndarray as 1st argument, or other data structures.   
 """
 
+###############################################################
+# Insertion #
+#!###########
 
+#===============================#
+# Create sample timeseries data #
+#===============================#
+import numpy as np
+import pandas as pd
+
+# Empty Series
+series_empty = pd.Series()
+
+# Time indexed Series
+datetime_index_01 = pd.date_range(start='2020-01-01', periods=10, freq='D') 
+series_01 = pd.Series(np.arange(1,11),index=datetime_index_01)
+series_01
+type(series_01)
+
+# Numbers indexed Series
+series_02 = pd.Series([10, 20, 30], index=[0, 1, 2])
+series_02
 
 
 ###############################################################################
