@@ -861,6 +861,21 @@ series_02 = pd.Series([10, 20, 30], index=[0, 1, 2])
 series_02
 
 
+###############################################################
+# Deletion #
+#!##########
+
+# Delete Series object
+del series_02
+
+# get 9th and 10th element of DatetimeIndex
+series_01.index[[8, 9]]
+
+# Delete 2 elements from Series indexed by DatetimeIndex object
+series_01.drop(series_01.index[[8, 9]])
+
+
+
 ###############################################################################
 # pandas dataframe #
 #!##################
@@ -917,6 +932,7 @@ list_00 = [('one', 'A', 'B', 'C', 'D'),
 dataframe_02 = pd.DataFrame.from_records(list_00)
 
 
+# TODO add from_dict method
 
 ###################################
 # Create DataFrame from .csv file #
