@@ -870,6 +870,15 @@ series_01.index[[8, 9]]
 series_01.drop(series_01.index[[8, 9]])
 
 
+###############################################################
+# Merging #
+#!#########
+
+# Merge Series 
+series_merged = series_01.append(series_01)
+series_merged
+
+
 
 ###############################################################################
 # pandas dataframe #
