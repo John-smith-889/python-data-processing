@@ -879,6 +879,25 @@ series_merged = series_01.append(series_01)
 series_merged
 
 
+###############################################################
+# Searching #
+#!###########
+
+#===============================#
+# Create sample timeseries data #
+#===============================#
+
+import numpy as np
+import pandas as pd
+datetime_index_01 = pd.date_range(start='2020-01-01', periods=10, freq='D') 
+series_01 = pd.Series(np.arange(1,11),index=datetime_index_01)
+
+# extract values of Series
+series_01.values
+
+# extract index of Series
+series_01.index
+
 
 ###############################################################################
 # pandas dataframe #
