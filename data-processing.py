@@ -898,6 +898,18 @@ series_01.values
 # extract index of Series
 series_01.index
 
+#=====================#
+# timeseries indexing #
+#=====================#
+#(taking 1st element of series)
+
+from datetime import datetime
+series_01.loc['2020-01-01']
+series_01.loc[datetime(2020, 1, 1)]
+series_01[0]
+series_01[2:]
+series_01[:-2]
+
 
 ###############################################################################
 # pandas dataframe #
