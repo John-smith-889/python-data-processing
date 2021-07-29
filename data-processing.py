@@ -910,6 +910,18 @@ series_01[0]
 series_01[2:]
 series_01[:-2]
 
+#=====================================#
+# taking the last DatetimeIndex value #
+#=====================================#
+
+# Extract last DatetimeIndex value (pandas timestamp) as timestamp
+# (if properly sorted in ascending order)
+series_01.index[-1]
+# Extract second last DatetimeIndex value (pandas timestamp) as datetime
+series_01.index[-1].to_pydatetime()
+#or
+series_01.last('1D').index[0].to_pydatetime()
+
 
 ###############################################################################
 # pandas dataframe #
