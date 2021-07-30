@@ -922,6 +922,34 @@ series_01.index[-1].to_pydatetime()
 #or
 series_01.last('1D').index[0].to_pydatetime()
 
+#=====================================#
+# Iteration and filtering over Series #
+#=====================================#
+
+# iterate over Series values 
+for i in series_01:
+    print(i)
+
+# iterate over Series values under condition
+for i in series_01:
+    if i>5 and i<9: print(i)
+    
+# iterate over Series index and values 
+for index, i in series_01.items():
+    print(index, i)
+
+# iterate over Series index and values under condition
+from datetime import datetime
+datetime_01 = datetime(year=2020, month=1, day=3)
+
+for index, i in series_01.items():
+    if index>datetime_01 and i>5: 
+        print(index, i)
+
+# filter Series
+series_01.loc[(series_01 > 0) & (series_01 < 6)]
+
+
 
 ###############################################################################
 # pandas dataframe #
