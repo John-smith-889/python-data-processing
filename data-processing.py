@@ -950,6 +950,22 @@ for index, i in series_01.items():
 series_01.loc[(series_01 > 0) & (series_01 < 6)]
 
 
+###############################################################
+# Traversal #
+#!###########
+
+# Create sample timeseries data 
+import numpy as np
+import pandas as pd
+datetime_index_01 = pd.date_range(start='2020-01-01', periods=10, freq='D') 
+series_01 = pd.Series(np.arange(1,11),index=datetime_index_01)
+
+# multiply every element of series times number
+series_01 * 2
+
+# perform operation on Series elements under condition
+[i**2 for i in series_01 if i>5] 
+
 
 ###############################################################################
 # pandas dataframe #
