@@ -967,6 +967,23 @@ series_01 * 2
 [i**2 for i in series_01 if i>5] 
 
 
+###############################################################
+# Sorting #
+#!#########
+
+# Create sample timeseries data 
+import numpy as np
+import pandas as pd
+datetime_index_01 = pd.date_range(start='2020-01-01', periods=10, freq='D') 
+series_01 = pd.Series(np.arange(1,11),index=datetime_index_01)
+
+# sort values in ascending order
+series_01.sort_values()
+
+# sort values in descending order
+series_01.sort_values(ascending=False)
+
+
 ###############################################################################
 # pandas dataframe #
 #!##################
