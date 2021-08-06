@@ -898,13 +898,40 @@ series_02 = pd.Series([10, 20, 30], index=[0, 1, 2])
 series_02
 
 #===========================================#
+# Convert pandas DataFrame to pandas Series #
+#===========================================#
+
+# Create DataFrame with single column
+dataframe_01 = pd.DataFrame(np.arange(5),index=range(5), columns=['A'])
+
+# Convert DataFrame to Series
+dataframe_01.squeeze()
+# name of a Series is automatically taken from column name
+
+
+# Create DataFrame with multiple columns
+dataframe_02 = pd.DataFrame(np.arange(10).reshape(5,2),index=range(5), columns=['A','B'])
+
+# Convert specific column of DataFrame to Series
+dataframe_02['A'].squeeze()
+
+# Convert specific row of DataFrame to Series
+dataframe_02.iloc[0].squeeze()
+# columns names are taken automatically as index
+
+
+#===========================================#
 # Convert pandas Series to pandas DataFrame #
 #===========================================#
+
+series_02 = pd.Series([10, 20, 30], index=[0, 1, 2])
+series_02
 
 # Convers Series to DataFrame
 series_02.to_frame()
 # or
 pd.DataFrame(series_02, columns=['A'])
+
 
 
 
