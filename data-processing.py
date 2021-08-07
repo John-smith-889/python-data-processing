@@ -1062,6 +1062,11 @@ series_01.sort_values()
 # sort values in descending order
 series_01.sort_values(ascending=False)
 
+# sort values according to index sorting in ascending order
+series_01.sort_index()
+
+
+
 
 ###############################################################################
 # pandas dataframe #
