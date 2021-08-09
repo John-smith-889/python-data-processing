@@ -460,14 +460,22 @@ type(set_02) # set
 # Searching #
 #!###########
 
-#=======================#
-# Set - subset matching #
-#=======================#
+#=============#
+# Sets subset #
+#=============#
 
 set_03 = {0,1,3}
 set_04 = {0,1,3,4,5}
 # Check if set_03 is a subset of set_04
 set_03.issubset(set_04) # True
+
+
+#=================#
+# Sets difference #
+#=================#
+
+# set_04 - set_03
+set_04.difference(set_03)
 
 
 
