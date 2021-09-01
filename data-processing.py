@@ -1119,6 +1119,16 @@ dict_01 = {'one': ['A', 'B', 'C', 'D'],
 
 dataframe_02 = pd.DataFrame(dict_01)
 
+# create datetime indexed df from dict
+dict_01 = {'A': [1, 2, 3, 4],
+           'B': [2, 4, 6, 8], 
+           'C': [10, 20, 30, 40]}
+# Create DateTimeIndex
+dti_01 = pd.date_range('2020-01-01', periods=4, freq='D') 
+# freq='MS'set the frequency in months 
+df_01 = pd.DataFrame(dict_01, index=dti_01) # index arg is optional
+df_01
+
 
 ######################
 # Convert list to df #
