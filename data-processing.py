@@ -478,6 +478,13 @@ set_03.issubset(set_04) # True
 set_04.difference(set_03)
 
 
+#====================#
+# Sets intersections #
+#====================#
+
+set_03.intersection(set_04)
+
+
 
 ###############################################################################
 # Dictionary #
