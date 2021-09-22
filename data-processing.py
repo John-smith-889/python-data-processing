@@ -1136,6 +1136,26 @@ dti_01 = pd.date_range('2020-01-01', periods=4, freq='D')
 df_01 = pd.DataFrame(dict_01, index=dti_01) # index arg is optional
 df_01
 
+#or
+pd.DataFrame.from_dict(dict_01)
+# (only dict allowed in the constructor, and different signature)
+
+
+#===============================================#
+# Convert dict with single values numbers to df #
+#===============================================#
+# numbers need to be packed in lists (not necessary in list if we pass index)
+dict_01 = {'one': [1],
+           'two': [8], 
+           'three': [10]}
+pd.DataFrame(dict_02)
+
+
+dict_01 = {'one': 1,
+           'two': 8, 
+           'three': 10}
+pd.DataFrame(dict_02, index=dti_01)
+
 
 ######################
 # Convert list to df #
