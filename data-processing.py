@@ -188,6 +188,12 @@ list_08.count(10)
 
 [i for i in list_08 if i > 5] 
 
+##############################################
+# Search for elements under double condition #
+##############################################
+
+[i*i if not i % 2==0 else 99 for i in list(range(9)) if i >2]
+
 
 ###############################################
 # Search for elements indexes under condition #
